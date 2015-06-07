@@ -68,9 +68,9 @@ namespace GeekayApp
         private async void GamesListView_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            string API_URL = "http://128.199.120.231:8000/games/7";
+            //string API_URL = "http://128.199.120.231:8000/games/7";
             //string API_URL = "http://127.0.0.1:8000/games/7";
-            //string API_URL = "http://46.101.20.113:8000/games/10";
+            string API_URL = "http://46.101.20.113:8000/games/10";
                 
             int game_id;
             //Accessing the server
@@ -78,31 +78,31 @@ namespace GeekayApp
             TextBlock item = e.ClickedItem as TextBlock;
             if (item.Tag.Equals(1) == true)
             {
-                //API_URL = "http://46.101.20.113:8000/games/7";
+                API_URL = "http://46.101.20.113:8000/games/7";
                 //API_URL = "http://128.199.120.231:8000/games/7";
-                API_URL = "http://127.0.0.1:8000/games/7/";
+                //API_URL = "http://127.0.0.1:8000/games/7/";
                 game_id = 1;
             }
             else if (item.Tag.Equals(2) == true)
             {
-                //API_URL = "http://46.101.20.113:8000/games/8";
+                API_URL = "http://46.101.20.113:8000/games/8";
                 //API_URL = "http://128.199.120.231:8000/games/8";
-                API_URL = "http://127.0.0.1:8000/games/8";
+                //API_URL = "http://127.0.0.1:8000/games/8";
                 game_id = 2;
             }
             else if (item.Tag.Equals(3) == true)
             {
-                //API_URL = "http://46.101.20.113:8000/games/9";
+                API_URL = "http://46.101.20.113:8000/games/9";
                 //API_URL = "http://128.199.120.231:8000/games/7";
                 
-                API_URL = "http://127.0.0.1:8000/games/9";
+                //API_URL = "http://127.0.0.1:8000/games/9";
                 game_id = 3;
             }
             else if (item.Tag.Equals(4) == true)
             {
-                //API_URL = "http://46.101.20.113:8000/games/10";
+                API_URL = "http://46.101.20.113:8000/games/10";
                 //API_URL = "http://128.199.120.231:8000/games/7";
-                API_URL = "http://127.0.0.1:8000/games/10";
+                //API_URL = "http://127.0.0.1:8000/games/10";
                 game_id = 4;
 
             }

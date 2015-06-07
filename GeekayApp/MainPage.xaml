@@ -9,10 +9,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Canvas Width="400">
-            <CaptureElement Canvas.ZIndex="1" x:Name="CaptureElement" HorizontalAlignment="Left" Height="529" Width="400" VerticalAlignment="Top" Margin="0,32,0,0" Stretch="UniformToFill"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="1">
+            <CaptureElement Canvas.ZIndex="1" x:Name="CaptureElement" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
             <Rectangle x:Name="YellowRect" Canvas.ZIndex="2" Height="260" Canvas.Left="100" Canvas.Top="173" Width="201" Opacity="0.2" Fill="Yellow"/>
-        </Canvas>
-        <Button x:Name="BtnCapturePhoto" Content="Capture" HorizontalAlignment="Left" Margin="148,567,0,0" VerticalAlignment="Top" Click="capture_Click"/>
+        </Grid>
+        <Button Grid.Row="1" x:Name="BtnCapturePhoto" Content="Capture" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="capture_Click"/>
+
     </Grid>
 </Page>
