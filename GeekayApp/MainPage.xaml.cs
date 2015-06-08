@@ -36,6 +36,8 @@ namespace GeekayApp
     {
         bool frontCam;
         public MediaCapture mediaCapture;
+        
+        private ProductPayload Prod_Resp;
         public MainPage()
         {
             this.InitializeComponent();
@@ -139,6 +141,7 @@ namespace GeekayApp
         }
 
 
+
         private async void capture_Click(object sender, RoutedEventArgs e)
         {
             BtnCapturePhoto.IsEnabled = false;
@@ -157,6 +160,7 @@ namespace GeekayApp
             }
 
 
+            /*
             var bitmap = new BitmapImage();
             await bitmap.SetSourceAsync(await photoStorageFile.OpenReadAsync());
             //var bitmap = new BitmapImage(new Uri("ms-appx:///Assets/photo.jpg", UriKind.Absolute));
@@ -166,24 +170,7 @@ namespace GeekayApp
             props.pixelWidth = pixWidth;
             props.pixelHeight = pixHeight;
 
-            //bitmap = null;
-            //BtnCapturePhoto.IsEnabled = true;
-
-            // load a jpeg, be sure to have the Pictures Library capability in your manifest
-            //var folder = KnownFolders.PicturesLibrary;
-            //var file = await folder.GetFileAsync("photo.jpg");
-            //var data = await FileIO.ReadBufferAsync(file);
-
-            // create a stream from the file
-            //var ms = new InMemoryRandomAccessStream();
-            //var dw = new Windows.Storage.Streams.DataWriter(ms);
-            //dw.WriteBuffer(data);
-            //await dw.StoreAsync();
-            //ms.Seek(0);
-
-            //// find out how big the image is, don't need this if you already know
-            ////var bm = new BitmapImage();
-            ////await bm.SetSourceAsync(ms);
+           
 
             // create a writable bitmap of the right size
             var wb = new WriteableBitmap(pixWidth, pixHeight);
@@ -209,85 +196,64 @@ namespace GeekayApp
 
             byte[] imagen = ConvertBitmapToByteArray(cropped);
 
-
-
-
-            Debug.WriteLine("image converted");
-            HttpClient httpClient = new HttpClient();
-            //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DefaultRequestHeaders.Add("Authorization", "CloudSight YqKiVgtYuWJwatAkkhtDsw");
+            var imgString = cropped.ToString();
+            */
+             
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://api.cloudsightapi.com/");
+            client.DefaultRequestHeaders.Add("Authorization", "CloudSight YqKiVgtYuWJwatAkkhtDsw");
             MultipartFormDataContent form = new MultipartFormDataContent();
-
             form.Add(new StringContent("en-US"), "image_request[locale]");
-            //form.Add(new StringContent("http://www.toysrus.com/graphics/product_images/pTRU1-18451070enh-z6.jpg"), "image_request[remote_image_url]");
-            var imageForm = new ByteArrayContent(imagen, 0, imagen.Count());
-            //imageForm.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+            
+            //HttpContent content = new StringContent(imgString);
+            //form.Add(content, "image_request[image]");
 
-            /*
-            var image_stream = await photoStorageFile.OpenStreamForReadAsync();
-            HttpContent content = new StreamContent(image_stream);
-            content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            var imgStream = await photoStorageFile.OpenStreamForReadAsync();
+            HttpContent imgContent = new StreamContent(imgStream);
+            imgContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
                 Name = "image_request[image]",
-                FileName = "image10.jpg"
+                FileName = "image.jpg"
             };
-            form.Add(content);
-            */
-
-            //form.Add(new StreamContent(image_stream), "image_request[image]");
-            //form.Add(imageForm, "image_request[image]", "photo10.jpg");
-            //form.Add(new StreamContent(new MemoryStream(imagen)), "image_request[image]", "photo14.jpg");
-            /*            
-            var imageContent = new ByteArrayContent(imagen);
-            imageContent.Headers.ContentType =
-                MediaTypeHeaderValue.Parse("image/jpeg");
-
-            form.Add(imageContent, "image_request[image]", "image.jpg");
-            */
-
-            MemoryStream photoStream = new MemoryStream();
-            photoStream.Write(imagen, 0, imagen.Length);
-
-            if (photoStream != null)
-            {
-                Debug.WriteLine("Photostream not null");
-                photoStream.Position = 0;
-                form.Add(new StreamContent(photoStream), "image_request[image]", "image.jpg");
-
-            }
-            Debug.WriteLine("Form Filled");
+            form.Add(imgContent);
+            string RESULT = "";
 
             try
             {
-                /*
-                HttpResponseMessage response = await httpClient.PostAsync("https://api.cloudsightapi.com/image_requests", form);
-                await httpClient.PostAsync("https://api.cloudsightapi.com/image_requests", form)
-                    .ContinueWith((postTask) =>
-                    {
-                        postTask.Result.EnsureSuccessStatusCode();
-                        //Debug.WriteLine(postTask);
-                    });
-                 */
-                /*
+                var response = await client.PostAsync("image_requests", form);
                 response.EnsureSuccessStatusCode();
-                httpClient.Dispose();
-                string result = response.Content.ReadAsStringAsync().Result;
-
-                Debug.WriteLine("Got REsult: "+result);
-                */
+                client.Dispose();
+                RESULT = response.Content.ReadAsStringAsync().Result;
+                Debug.WriteLine("GET TOKEN "+RESULT);
+            
             }
-            catch (HttpRequestException ex)
+            catch(HttpRequestException ex)
             {
                 Debug.WriteLine(ex.Message.ToString());
             }
+            
+            
+            if (RESULT != "")
+            {
+                JsonValue jsonValue = JsonValue.Parse(RESULT);
+                string TOKEN = jsonValue.GetObject().GetNamedString("token");
+                Debug.WriteLine(TOKEN);
 
-            this.Frame.Navigate(typeof(PhotoReview), bitmap);
+               
+
+                this.Frame.Navigate(typeof(ProductDesc),TOKEN);
+                
+            }
+            //this.Frame.Navigate(typeof(PhotoReview), bitmap);
             //this.Frame.Navigate(typeof(PhotoReview),cropped);
             //this.Frame.Navigate(typeof(PhotoReview), c);
             //this.Frame.Navigate(typeof(NextStep), props);
 
 
         }
+
+        
+
 
     }   
     

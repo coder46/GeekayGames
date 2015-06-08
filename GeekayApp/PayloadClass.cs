@@ -17,5 +17,7 @@ namespace GeekayApp
         public string trailerUrl { get; set; }
         public int game_id { get; set; }
 
+        
+
     }
 }

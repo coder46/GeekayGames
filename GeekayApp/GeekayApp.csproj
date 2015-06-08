@@ -104,6 +104,10 @@
     <Compile Include="PhotoReview.xaml.cs">
       <DependentUpon>PhotoReview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductDesc.xaml.cs">
+      <DependentUpon>ProductDesc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPayload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="videoPage.xaml.cs">
       <DependentUpon>videoPage.xaml</DependentUpon>
@@ -155,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PhotoReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductDesc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
