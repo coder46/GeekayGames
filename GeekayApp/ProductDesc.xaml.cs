@@ -39,6 +39,8 @@ namespace GeekayApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            LoadingBar.IsEnabled = true;
+            LoadingBar.Visibility = Visibility.Visible;
             var TOKEN = e.Parameter as string;
             //desc_block.Text = desc.PROD_DESC;
             dispatcherTimer = new DispatcherTimer();
@@ -74,10 +76,13 @@ namespace GeekayApp
 
                 if (STATUS == "completed")
                 {
+                    LoadingBar.IsEnabled = false;
+                    LoadingBar.Visibility = Visibility.Collapsed;
                     Debug.WriteLine(getRESULT);
                     var PRODUCT_DESC = jsonValue.GetObject().GetNamedString("name");
                     Debug.WriteLine(PRODUCT_DESC);
                     desc_block.Text = PRODUCT_DESC;
+                    
                     dispatcherTimer.Stop();
                     //this.Frame.Navigate(typeof(ProductDesc), Prod_Resp);
 

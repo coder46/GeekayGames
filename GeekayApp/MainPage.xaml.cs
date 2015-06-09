@@ -87,6 +87,7 @@ namespace GeekayApp
         protected override async void OnNavigatedFrom(NavigationEventArgs e)
         {
             BtnCapturePhoto.IsEnabled = true;
+            BtnCapturePhoto.Visibility = Visibility.Visible;
             // Release resources
             if (mediaCapture != null)
             {
@@ -144,8 +145,12 @@ namespace GeekayApp
 
         private async void capture_Click(object sender, RoutedEventArgs e)
         {
-            BtnCapturePhoto.IsEnabled = false;
+            LoadingRing.IsEnabled = true;
+            LoadingRing.Visibility = Visibility.Visible;
+            
 
+            BtnCapturePhoto.IsEnabled = false;
+            BtnCapturePhoto.Visibility = Visibility.Visible;
             string desiredName = "photo14.jpg";
             ImageEncodingProperties imageProperties = ImageEncodingProperties.CreateJpeg();
             var photoStorageFile = await KnownFolders.PicturesLibrary.CreateFileAsync(desiredName, CreationCollisionOption.GenerateUniqueName);
@@ -158,8 +163,10 @@ namespace GeekayApp
                 mediaCapture.Dispose();
                 mediaCapture = null;
             }
-
-
+            
+            YellowRect.Visibility = Visibility.Collapsed;
+            LoadingRing.IsActive = true;
+            
             /*
             var bitmap = new BitmapImage();
             await bitmap.SetSourceAsync(await photoStorageFile.OpenReadAsync());
@@ -238,7 +245,9 @@ namespace GeekayApp
                 JsonValue jsonValue = JsonValue.Parse(RESULT);
                 string TOKEN = jsonValue.GetObject().GetNamedString("token");
                 Debug.WriteLine(TOKEN);
-
+                LoadingRing.IsActive = false;
+                LoadingRing.IsEnabled = false;
+                LoadingRing.Visibility = Visibility.Collapsed;
                
 
                 this.Frame.Navigate(typeof(ProductDesc),TOKEN);

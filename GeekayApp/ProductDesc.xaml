@@ -11,14 +11,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="6*"/>
 
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Product Info" VerticalAlignment="Top" FontSize="50" TextAlignment="Right"/>
-        <TextBlock x:Name="desc_block" Grid.Row="1" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Top" FontSize="25"/>
-        <ListView x:Name="statusView" Grid.Row="2" Height="438" Grid.RowSpan="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390" Margin="0,0.333,0,0"/>
-
+        <TextBlock x:Name="desc_block" Grid.Row="2" TextWrapping="Wrap" Text="Loading..." VerticalAlignment="Top" FontSize="25"/>
+        <ProgressBar x:Name="LoadingBar" Grid.Row="1" Visibility="Collapsed" IsEnabled="False" IsIndeterminate="true" HorizontalAlignment="Stretch" Height="15" VerticalAlignment="Center" Width="350" />
+        <ListView x:Name="statusView" Grid.Row="3" Height="438" Grid.RowSpan="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="390" Margin="0,0.333,0,0"/>
+        
 
     </Grid>
 </Page>
