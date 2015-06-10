@@ -166,45 +166,11 @@ namespace GeekayApp
             
             YellowRect.Visibility = Visibility.Collapsed;
             LoadingRing.IsActive = true;
+
             
-            /*
-            var bitmap = new BitmapImage();
-            await bitmap.SetSourceAsync(await photoStorageFile.OpenReadAsync());
-            //var bitmap = new BitmapImage(new Uri("ms-appx:///Assets/photo.jpg", UriKind.Absolute));
-            int pixWidth = bitmap.PixelWidth;
-            int pixHeight = bitmap.PixelHeight;
-            ImageProps props = new ImageProps();
-            props.pixelWidth = pixWidth;
-            props.pixelHeight = pixHeight;
+            //this.Frame.Navigate(typeof(PhotoReview), bitmap);
+            
 
-           
-
-            // create a writable bitmap of the right size
-            var wb = new WriteableBitmap(pixWidth, pixHeight);
-            await wb.SetSourceAsync(await photoStorageFile.OpenReadAsync());
-            // ms.Seek(0);
-
-            // load the writable bitpamp from the stream
-            //await wb.SetSourceAsync(ms);
-            Debug.WriteLine("Width: " + wb.PixelWidth.ToString());
-            Debug.WriteLine("Height: " + wb.PixelHeight.ToString());
-            Debug.WriteLine("Width: " + pixWidth.ToString());
-            Debug.WriteLine("Height: " + pixHeight.ToString());
-
-            //var cropped = wb.Rotate(90).Crop(100, 173, 201, 260);
-            var cropped = wb.Rotate(90);
-            //wb = null;
-            Debug.WriteLine("Width: " + cropped.PixelWidth.ToString());
-            Debug.WriteLine("Height: " + cropped.PixelHeight.ToString());
-            //cropped = cropped.Crop(0,0,0,0);
-            var c = cropped.Crop(new Rect(100, 173, 201, 260));
-            Debug.WriteLine("Cropped_Width: " + c.PixelWidth.ToString());
-            Debug.WriteLine("Cropped_Height: " + c.PixelHeight.ToString());
-
-            byte[] imagen = ConvertBitmapToByteArray(cropped);
-
-            var imgString = cropped.ToString();
-            */
              
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://api.cloudsightapi.com/");
@@ -253,7 +219,6 @@ namespace GeekayApp
                 this.Frame.Navigate(typeof(ProductDesc),TOKEN);
                 
             }
-            //this.Frame.Navigate(typeof(PhotoReview), bitmap);
             //this.Frame.Navigate(typeof(PhotoReview),cropped);
             //this.Frame.Navigate(typeof(PhotoReview), c);
             //this.Frame.Navigate(typeof(NextStep), props);

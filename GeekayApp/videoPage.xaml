@@ -8,28 +8,42 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <TextBlock x:Name="gameHead" TextWrapping="Wrap" Text="Game Details" Height="33" FontSize="30"/>
-        <MediaElement x:Name="player" PosterSource="Assets/forza5_1.jpg" Width="340" Stretch="UniformToFill" Height="219" Margin="27,0,33,30" />
-        <Button x:Name="playBtn2" Content="Play Trailer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,244,0" Click="playBtn2_Click" />
-        <TextBlock x:Name="gameTitle" TextWrapping="Wrap" Text="TextBlock" Height="33" FontSize="28"/>
-        <TextBlock x:Name="gamePublisher" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
-        <TextBlock x:Name="datePub" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
-        <TextBlock x:Name="gameCats" TextWrapping="Wrap" FontSize="23">
-        	<Run FontSize="21" Text="TextBlock"/>
-        </TextBlock>
-        <TextBlock x:Name="gameRated" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
-        <StackPanel Orientation="Horizontal" Margin="2,0,25,0">
-            <TextBox x:Name="ratingBox" Margin="0" TextWrapping="Wrap" Text="10" VerticalAlignment="Stretch" Width="71" TextAlignment="Center" Padding="7,35,8,0" FontSize="35" Background="#FFF5DE50" FontWeight="Bold" BorderBrush="Black"/>
-            <StackPanel Orientation="Vertical" Width="195">
-                <StackPanel  Orientation="Horizontal" Margin="14,0,-22,0" HorizontalAlignment="Left" Width="203">
-                    <Button x:Name="buyBtn" Content=" Buy Now" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="49" Margin="22,0,45,0" Width="124" Background="#FFD06304"/>
+        <Grid>
 
-                </StackPanel>
-                <Button x:Name="reviews_Btn" Width="124" Content="Reviews" Margin="35,0,0,0"/>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="1.25*"/>
+            <RowDefinition Height="1.25*"/>
 
-        </StackPanel>
-        
-    </StackPanel>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="gameHead" TextWrapping="Wrap" Text="Game Details" Height="33" FontSize="30"/>
+        <MediaElement  Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="player" PosterSource="Assets/forza5_1.jpg"  Stretch="UniformToFill"   />
+        <Button Grid.Row="2" x:Name="playBtn2" Grid.ColumnSpan="3" Content="Play Trailer" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Click="playBtn2_Click"  />
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="gameTitle" TextWrapping="Wrap" Text="TextBlock" Height="33" FontSize="28"/>
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="gamePublisher" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
+        <TextBlock Grid.Row="5" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="datePub" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
+        <TextBlock Grid.Row="6" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="gameCats" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
+        <TextBlock Grid.Row="7" Grid.ColumnSpan="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="gameRated" TextWrapping="Wrap" Text="TextBlock" FontSize="21"/>
+        <TextBox Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="ratingBox" Margin="0" TextWrapping="Wrap" Text="10"  Width="71" TextAlignment="Center" Padding="7,35,8,0" FontSize="35" Background="#FFF5DE50" FontWeight="Bold" BorderBrush="Black"/>
+        <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" x:Name="buyBtn" Content=" Buy Now"   Width="124" Background="#FFD06304"/>
+        <Button Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" x:Name="reviews_Btn" Width="124" Content="Reviews" />
+
+    </Grid>
 </Page>
