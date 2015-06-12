@@ -8,7 +8,7 @@
     mc:Ignorable="d" Foreground="White" >
     <Page.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="Black" Offset="0.016"/>
             <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
     </Page.Background>
@@ -19,7 +19,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="menu" FontSize="70" VerticalAlignment="Top"/>
-        <ListView x:Name="menuList" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top" SelectionChanged="ItemListView_SelectionChanged" >
+        <ListView x:Name="menuList" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top" SelectionChanged="ItemListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Height="110" Margin="6">
@@ -32,7 +32,7 @@
                         </Border>
                         <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="{Binding Title}" FontSize="40" TextWrapping="NoWrap"/>
-                            
+
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -40,5 +40,5 @@
         </ListView>
 
     </Grid>
-    
+
 </Page>
