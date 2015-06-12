@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -76,7 +77,11 @@ namespace GeekayApp
         {
             // Use e.AddedItems to get the items that are selected in the ItemsControl.
             //selectedItems = (List<object>)e.AddedItems;
-
+            var data = e.AddedItems[0] as MyImageData;
+            if(data.Title.Equals("Scan a Game"))
+            {
+                this.Frame.Navigate(typeof(MainPage));
+            }
         }
     }
 }
