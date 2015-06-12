@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="1">
             <CaptureElement Canvas.ZIndex="1" x:Name="CaptureElement" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
-            <Rectangle x:Name="YellowRect" Canvas.ZIndex="2" Height="260" Canvas.Left="100" Canvas.Top="173" Width="201" Opacity="0.2" Fill="Yellow"/>
+            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="YellowRect" Canvas.ZIndex="2" Height="425" Width="300" Canvas.Left="100" Canvas.Top="173" Opacity="0.2" Fill="Yellow" Margin="41,77,42,74" />
             <ProgressRing Visibility="Visible" IsEnabled="True" Canvas.ZIndex="3" x:Name="LoadingRing" HorizontalAlignment="Center" VerticalAlignment="Center" Height="142" Margin="134,224,125,210" Width="141"/>
 
         </Grid>
