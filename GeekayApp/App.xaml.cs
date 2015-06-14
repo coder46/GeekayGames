@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Windows.Phone.UI.Input;
+using Microsoft.ApplicationInsights;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -26,6 +27,11 @@ namespace GeekayApp
     /// </summary>
     public sealed partial class App : Application
     {
+        /// <summary>
+        /// Allows tracking page views, exceptions and other telemetry through the Microsoft Application Insights service.
+        /// </summary>
+        public static TelemetryClient TelemetryClient;
+
         private TransitionCollection transitions;
 
         /// <summary>
@@ -34,6 +40,8 @@ namespace GeekayApp
         /// </summary>
         public App()
         {
+            TelemetryClient = new TelemetryClient();
+
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
@@ -107,18 +115,19 @@ namespace GeekayApp
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                
+                /*
                 if (!rootFrame.Navigate(typeof(GameList), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
+                */
+
                 
-                /*
                 if (!rootFrame.Navigate(typeof(MenuPage), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }
-                */
+                
                 
             }
 

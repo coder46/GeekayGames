@@ -89,13 +89,13 @@ namespace GeekayApp
 
                     string API_URL = "http://46.101.20.113:8000/games/9";
                     //API_URL = "http://127.0.0.1:8000/games/9/";
-                    API_URL = "http://azuregeekay.cloudapp.net:8000/games/9/";
+                    //API_URL = "http://azuregeekay.cloudapp.net:8000/games/9/";
                     int game_id = 3;
                     
                     if (PRODUCT_DESC.ToLower().Contains("fifa"))
                     {
                         API_URL = "http://46.101.20.113:8000/games/7";
-                        API_URL = "http://azuregeekay.cloudapp.net:8000/games/7/";
+                        //API_URL = "http://azuregeekay.cloudapp.net:8000/games/7/";
                         game_id = 1;
                     }
 
@@ -103,7 +103,7 @@ namespace GeekayApp
                     {
                         game_id = 2;
                         API_URL = "http://46.101.20.113:8000/games/8";
-                        API_URL = "http://azuregeekay.cloudapp.net:8000/games/8/";
+                        //API_URL = "http://azuregeekay.cloudapp.net:8000/games/8/";
                     
                     }
 
@@ -111,7 +111,7 @@ namespace GeekayApp
                     {
                         game_id = 3;
                         API_URL = "http://46.101.20.113:8000/games/9";
-                        API_URL = "http://azuregeekay.cloudapp.net:8000/games/9/";
+                        //API_URL = "http://azuregeekay.cloudapp.net:8000/games/9/";
                     
                     }
 
@@ -119,7 +119,7 @@ namespace GeekayApp
                     {
                         game_id = 4;
                         API_URL = "http://46.101.20.113:8000/games/10";
-                        API_URL = "http://azuregeekay.cloudapp.net:8000/games/10/";
+                        //API_URL = "http://azuregeekay.cloudapp.net:8000/games/10/";
                     
                     }
 
@@ -154,7 +154,9 @@ namespace GeekayApp
                                 payload.gameRated = jsonValue2.GetObject().GetNamedString("ratedInfo");
                                 payload.rating = jsonValue2.GetObject().GetNamedNumber("rating");
                                 payload.trailerUrl = jsonValue2.GetObject().GetNamedString("trailerUrl");
-                                this.Frame.Navigate(typeof(videoPage), payload);
+                                //this.Frame.Navigate(typeof(videoPage), payload);
+                                this.Frame.Navigate(typeof(GameInfoPage), payload);
+                            
                             }
 
                         }

@@ -1,6 +1,7 @@
 ﻿using MyToolkit.Multimedia;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace GeekayApp
@@ -23,6 +25,39 @@ namespace GeekayApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+
+    public class GameListData
+    {
+        public string Image1
+        {
+            get;
+            set;
+        }
+        public string gameName1
+        {
+            get;
+            set;
+        }
+        public string pubName1
+        {
+            get;
+            set;
+        }
+        public string yearRel1
+        {
+            get;
+            set;
+        }
+
+        public string ratingVal1
+        {
+            get;
+            set;
+        }
+    }
+
+
     public sealed partial class GameInfoPage : Page
     {
         public int game_id;
@@ -91,6 +126,12 @@ namespace GeekayApp
 
             //ImgSrc.ImageSource = player.PosterSource;
             GInfoPage.Background = ImgSrc;
+
+
+            //code for "related" hubsection
+
+           
+
 
 
         }
@@ -165,6 +206,71 @@ namespace GeekayApp
             
         }
 
+        private void gameImg_Loaded(object sender, RoutedEventArgs e)
+        {
+            var gameImg = (Image)sender;
+            if (payload.game_id == 1)
+            {
+
+                gameImg.Source = new BitmapImage(new Uri("ms-appx:///Assets/fifa_icon.jpg", UriKind.Absolute));
+                
+            }
+            else if (payload.game_id == 2)
+            {
+                gameImg.Source = new BitmapImage(new Uri("ms-appx:///Assets/ac3_icon.jpg", UriKind.Absolute));
+                
+            }
+            else if (payload.game_id == 3)
+            {
+                gameImg.Source = new BitmapImage(new Uri("ms-appx:///Assets/batman_icon.jpg", UriKind.Absolute));
+            }
+            else if (payload.game_id == 4)
+            {
+                gameImg.Source = new BitmapImage(new Uri("ms-appx:///Assets/forza_icon.jpg", UriKind.Absolute));
+                
+            }
+
+        }
+
+        private void pubName_Loaded(object sender, RoutedEventArgs e)
+        {
+            var pubName = (TextBlock)sender;
+            pubName.Text = payload.gamePublisher;
+        }
+
+        private void yearRel_Loaded(object sender, RoutedEventArgs e)
+        {
+            var yearRel = (TextBlock)sender;
+
+            string[] stringSeparators = new string[] { "-" };
+            //string[] result;
+            
+            yearRel.Text = payload.datePub.Split(stringSeparators, StringSplitOptions.None)[0];
+        }
+
+        private void gameListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Use e.AddedItems to get the items that are selected in the ItemsControl.
+            //selectedItems = (List<object>)e.AddedItems;
+            var data = e.AddedItems[0] as GameListData;
+
+
+        }
+
+        private void gameList_Loaded(object sender, RoutedEventArgs e)
+        {
+            var gameList = (ListView)sender;
+
+            ObservableCollection<GameListData> ds2 = new ObservableCollection<GameListData>();
+            ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/batman_icon.jpg", gameName1 = "Game 1", pubName1 = "Publisher 1", yearRel1 = "2010", ratingVal1 = "2" });
+            ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/ac3_icon.jpg", gameName1 = "Game 2", pubName1 = "Publisher 2", yearRel1 = "2015", ratingVal1 = "5" });
+            ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/fifa_icon.jpg", gameName1 = "Game 3", pubName1 = "Publisher 3", yearRel1 = "2012", ratingVal1 = "3" });
+            ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/forza_icon.jpg", gameName1 = "Game 4", pubName1 = "Publisher 4", yearRel1 = "2014", ratingVal1 = "1" });
+
+            
+            gameList.ItemsSource = ds2;
+
+        }
 
     }
 }
