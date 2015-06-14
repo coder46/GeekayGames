@@ -121,7 +121,9 @@ namespace GeekayApp
                 payload.gameRated = jsonValue.GetObject().GetNamedString("ratedInfo");
                 payload.rating = jsonValue.GetObject().GetNamedNumber("rating");
                 payload.trailerUrl = jsonValue.GetObject().GetNamedString("trailerUrl");
-                this.Frame.Navigate(typeof(videoPage), payload);
+                //this.Frame.Navigate(typeof(videoPage), payload);
+                this.Frame.Navigate(typeof(GameInfoPage), payload);
+            
             }
             
         }

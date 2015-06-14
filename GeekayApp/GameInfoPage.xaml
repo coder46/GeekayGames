@@ -1,0 +1,121 @@
+﻿<Page x:Name="GInfoPage"
+    x:Class="GeekayApp.GameInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GeekayApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:RatingControl="using:JISoft.RatingControl"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="HubSection">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                           FontSize="60"
+                           Foreground="White" FontWeight="Normal"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Hub" x:Key="HubStyle">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                           FontSize="23"
+                           Foreground="White"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+    <Page.Background>
+        <ImageBrush Stretch="UniformToFill" ImageSource="Assets/ac3.jpg" Opacity="0.15"/>
+    </Page.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Hub x:Name="GameHub"  Grid.Row="1" Header="GAME NAME" Style="{StaticResource HubStyle}">
+            <HubSection x:Name="HS1" Header="details">
+
+                <DataTemplate >
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1.5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="InfoGrid" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="160">
+                                <Image Source="ms-appx:///Assets/ACB.jpg" Stretch="UniformToFill"/>
+                            </Border>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="gameName" Loaded="gameName_Loaded" Grid.Row="0" FontSize="33" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Game Name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                <TextBlock x:Name="pubName" Grid.Row="1" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Publisher name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                <TextBlock x:Name="yearRel" Grid.Row="3" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Year Released" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                <RatingControl:Rating Height="25" Width="126" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="3" Margin="0,0.5,0,-0.5">
+                                    <RatingControl:Rating.FilledItemStyle>
+                                        <Style TargetType="RatingControl:RatingItem">
+                                            <Setter Property="Background" Value="White" />
+                                        </Style>
+                                    </RatingControl:Rating.FilledItemStyle>
+                                    <RatingControl:Rating.UnfilledItemStyle>
+                                        <Style TargetType="RatingControl:RatingItem">
+                                            <Setter Property="Background" Value="#FF777676"/>
+                                        </Style>
+                                    </RatingControl:Rating.UnfilledItemStyle>
+                                </RatingControl:Rating>
+                            </Grid>
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Buy Now" HorizontalAlignment="Left" Margin="0,0,0,-2" VerticalAlignment="Center" Background="#FF107C10"/>
+                            <TextBlock x:Name="gamePrice" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" TextWrapping="Wrap" Text="AED 250" Margin="0,-1,0,0" FontWeight="Bold"/>
+                        </Grid>
+                        <MediaElement Loaded="player_Loaded" x:Name="player" Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" PosterSource="Assets/ac3.jpg"  Stretch="UniformToFill" />
+                        <Button x:Name="playBtn2" Grid.Row="3" Click="playBtn2_Click" Content="Play Trailer" HorizontalAlignment="Left" Margin="0,0,0,-2" VerticalAlignment="Top" Background="#FFFFCC00" Foreground="Black" />
+
+
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="related" >
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+
+                    </Grid>
+                </DataTemplate>
+
+            </HubSection>
+        </Hub>
+
+    </Grid>
+</Page>

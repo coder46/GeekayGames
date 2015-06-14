@@ -82,6 +82,7 @@ namespace GeekayApp
             {
                 this.Frame.Navigate(typeof(MainPage));
             }
+
         }
     }
 }
