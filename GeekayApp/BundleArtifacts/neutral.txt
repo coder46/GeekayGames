@@ -1,0 +1,4 @@
+MainPackage=C:\Users\t-moane\Source\Repos\GeekayGames\GeekayApp\bin\Debug\GeekayApp_1.0.0.3_Bundle\GeekayApp_1.0.0.3_AnyCPU_Debug.appx
+SymbolPackage=C:\Users\t-moane\Source\Repos\GeekayGames\GeekayApp\AppPackages\GeekayApp_1.0.0.3_Debug_Test\GeekayApp_1.0.0.3_AnyCPU_Debug.appxsym
+ResourcePack=C:\Users\t-moane\Source\Repos\GeekayGames\GeekayApp\bin\Debug\GeekayApp_1.0.0.3_Bundle\GeekayApp_1.0.0.3_scale-100.appx
+ResourcePack=C:\Users\t-moane\Source\Repos\GeekayGames\GeekayApp\bin\Debug\GeekayApp_1.0.0.3_Bundle\GeekayApp_1.0.0.3_scale-140.appx

@@ -18,6 +18,7 @@
     <ApplicationInsightsResourceId>/subscriptions/cf89d81c-4182-44b9-be18-dc5fe6b559f2/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/GeekayApp</ApplicationInsightsResourceId>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <AppxBundle>Never</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
