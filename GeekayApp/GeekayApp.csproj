@@ -203,6 +203,30 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Accord">
+      <HintPath>..\packages\portable.accord.core.2.15.0.50504\lib\portable-net45+netcore45+wpa81\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Imaging">
+      <HintPath>..\packages\portable.accord.imaging.2.15.0.50504\lib\portable-net45+netcore45+wpa81\Accord.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning">
+      <HintPath>..\packages\portable.accord.machinelearning.2.15.0.50504\lib\portable-net45+netcore45+wpa81\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>..\packages\portable.accord.math.2.15.0.50504\lib\portable-net45+netcore45+wpa81\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics">
+      <HintPath>..\packages\portable.accord.statistics.2.15.0.50504\lib\portable-net45+netcore45+wpa81\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge">
+      <HintPath>..\packages\portable.aforge.core.2.2.5.50504\lib\portable-win81+wpa81\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging">
+      <HintPath>..\packages\portable.aforge.imaging.2.2.5.50504\lib\portable-net45+netcore45+wpa81\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math">
+      <HintPath>..\packages\portable.aforge.math.2.2.5.50504\lib\portable-net45+netcore45+wpa81\AForge.Math.dll</HintPath>
+    </Reference>
     <Reference Include="JRatingControl">
       <HintPath>..\packages\JISoft.Rating.1.0.3\lib\portable-wpa81+win81\JRatingControl.dll</HintPath>
     </Reference>
@@ -223,6 +247,12 @@
     </Reference>
     <Reference Include="MyToolkit.Extended">
       <HintPath>..\packages\MyToolkit.Extended.2.3.30.0\lib\portable-wpa81+win8\MyToolkit.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="Shim">
+      <HintPath>..\packages\shim.1.0.1.50427\lib\portable-win81+wpa81\Shim.dll</HintPath>
+    </Reference>
+    <Reference Include="Shim.Drawing">
+      <HintPath>..\packages\shim.drawing.2.2.5.50504\lib\portable-win81+wpa81\Shim.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="WriteableBitmapEx.WinRT">
       <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\wpa81\WriteableBitmapEx.WinRT.dll</HintPath>

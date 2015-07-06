@@ -87,10 +87,10 @@ namespace GeekayApp
                     //Now start searching product in database
 
 
-                    string API_URL = "http://46.101.20.113:8000/games/9";
-                    //API_URL = "http://127.0.0.1:8000/games/9/";
-                    //API_URL = "http://azuregeekay.cloudapp.net:8000/games/9/";
-                    int game_id = 3;
+                    string API_URL = "http://46.101.20.113:8000/games/8";
+                    //API_URL = "http://127.0.0.1:8000/games/8/";
+                    //API_URL = "http://azuregeekay.cloudapp.net:8000/games/8/";
+                    int game_id = 2;
                     
                     if (PRODUCT_DESC.ToLower().Contains("fifa"))
                     {
