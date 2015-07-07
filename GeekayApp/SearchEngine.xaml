@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="GeekayApp.SearchEngine"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GeekayApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:RatingControl="using:JISoft.RatingControl"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.30*"/>
+                <ColumnDefinition Width="8.40*"/>
+                <ColumnDefinition Width="0.30*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="queryBox" KeyDown="queryBox_KeyDown" Grid.Column="1" HorizontalAlignment="Stretch"  Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" PlaceholderText="search for a game ..." PreventKeyboardDisplayOnProgrammaticFocus="True"/>
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9*"/>
+
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="myText" Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
+            <ListView Loaded="gameList_Loaded" x:Name="gameList" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top" SelectionChanged="gameListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="1" Height="10" HorizontalAlignment="Stretch">
+
+                            </Border>
+                            <Grid  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Height="130">
+                                    <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                </Border>
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="gameName1" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gameName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="pubName1"  Grid.Row="1" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding pubName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="yearRel1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding yearRel1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <RatingControl:Rating Height="20" Width="100" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="{Binding ratingVal1}" Margin="0,0.5,0,-0.5">
+                                        <RatingControl:Rating.FilledItemStyle>
+                                            <Style TargetType="RatingControl:RatingItem">
+                                                <Setter Property="Background" Value="White" />
+                                            </Style>
+                                        </RatingControl:Rating.FilledItemStyle>
+                                        <RatingControl:Rating.UnfilledItemStyle>
+                                            <Style TargetType="RatingControl:RatingItem">
+                                                <Setter Property="Background" Value="#FF777676"/>
+                                            </Style>
+                                        </RatingControl:Rating.UnfilledItemStyle>
+                                    </RatingControl:Rating>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Page>
