@@ -27,6 +27,10 @@ using Windows.Graphics.Display;
 using Windows.Storage.Streams;
 using System.Diagnostics;
 using System.Net.Http.Headers;
+using System.Drawing;
+using Windows.Storage.FileProperties;
+using System.Collections.Specialized;
+
 
 
 namespace GeekayApp
@@ -183,6 +187,28 @@ namespace GeekayApp
 
             var imgStream = await photoStorageFile.OpenStreamForReadAsync();
             HttpContent imgContent = new StreamContent(imgStream);
+
+            //Compressing the Image
+            
+            ImageProperties myProps = await photoStorageFile.Properties.GetImagePropertiesAsync();
+            
+            WriteableBitmap bmp = new WriteableBitmap((int)myProps.Width, (int)myProps.Height);
+            
+            bmp.SetSource((await photoStorageFile.OpenReadAsync()));
+            
+            
+            var rotated = bmp.Rotate(90);
+            var resized = bmp.Resize(700, 1000, WriteableBitmapExtensions.Interpolation.Bilinear);
+
+            //this.Frame.Navigate(typeof(PhotoReview), resized);
+            
+            var fileStream = new MemoryStream();
+            var newArray = rotated.ToByteArray();
+            fileStream.Write(newArray, 0, newArray.Length);
+
+            //imgContent = new StreamContent(fileStream);
+            //imgContent = new ByteArrayContent(newArray);
+            
             imgContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
                 Name = "image_request[image]",

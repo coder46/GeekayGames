@@ -44,8 +44,8 @@ namespace GeekayApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var bitmap = e.Parameter as BitmapImage;
-            //var wb = e.Parameter as WriteableBitmap;
+            //var bitmap = e.Parameter as BitmapImage;
+            var wb = e.Parameter as WriteableBitmap;
             //var cropped = wb.Rotate(90).Crop(0, 0, 10, 10);
             //var cropped = wb.Rotate(90);
             
@@ -53,10 +53,10 @@ namespace GeekayApp
             //wb = wb.RotateFree(270);
             //gameImg.Width = wb.PixelWidth;
             //gameImg.Height = wb.PixelHeight;
-            //gameImg.Source = wb;
-
             
-            gameImg.Source = bitmap;
+            
+            gameImg.Source = wb;
+            //gameImg.Source = bitmap;
 
 
    
