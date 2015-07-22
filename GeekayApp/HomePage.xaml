@@ -86,7 +86,41 @@
                         </ListView.ItemsPanel>
                     </ListView>
                 </Grid>
+                
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="38*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="38*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <!--<Border Grid.Row="1" Grid.Column="1" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="Auto" Height="Auto">
+                        <Image x:Name="bannerImg" Stretch="UniformToFill"/>
+                    </Border>-->
+                    <ListView Grid.Row="1" Grid.Column="1" x:Name="BannersList" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ScrollViewer.HorizontalScrollMode="Enabled"
+                              ScrollViewer.VerticalScrollMode="Disabled" 
+                              ScrollViewer.ZoomMode="Disabled">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto">
+                                    <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Grid>
             </Grid>
 
             <Grid x:Name="ListFragment" Background="#F4F4F4">

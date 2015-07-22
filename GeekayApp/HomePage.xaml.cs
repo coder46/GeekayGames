@@ -49,10 +49,12 @@ namespace GeekayApp
 
             ObservableCollection<NewGameListData> ds2 = new ObservableCollection<NewGameListData>();
             ObservableCollection<NewGameListData> ds3 = new ObservableCollection<NewGameListData>();
+            ObservableCollection<BannerListData> ds4 = new ObservableCollection<BannerListData>();
 
+            HttpClient client = new HttpClient();
+                
             try
             {
-                HttpClient client = new HttpClient();
                 string API_URL = "http://46.101.20.113:8000/games/homescreen/newgames";
                 string API_URL2 = "http://46.101.20.113:8000/games/homescreen/topgames";
                 
@@ -153,8 +155,49 @@ namespace GeekayApp
                 Debug.WriteLine(ex.Message.ToString());
             }
 
+            //Banner part
+
+            try
+            {
+                string API_URL = "http://46.101.20.113:8000/games/homescreen/banners";
+
+                var response = await client.GetAsync(new Uri(API_URL));
+
+                //client.Dispose();
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (result != "")
+                {
+                    Debug.WriteLine(result);
+                    JsonValue jv = JsonValue.Parse(result);
+                    int len = jv.GetArray().Count;
+                    if(len > 5)
+                    {
+                        len = 5;
+                    }
+                    for (int i = 0; i < len; i++)
+                    {
+                        IJsonValue ele = jv.GetArray()[i];
+                        string imgPath = ele.GetObject().GetNamedString("imgPath");
+                        Debug.WriteLine(imgPath);
+                        BannerListData bannerData = new BannerListData();
+                        bannerData.Image1 = new BitmapImage(new Uri(imgPath));
+                        ds4.Add(bannerData);
+                    }
+                    
+                }
+
+            }
+            catch (HttpRequestException ex4)
+            {
+                Debug.WriteLine(ex4.Message.ToString());
+            }
+
             NewGamesList.ItemsSource = ds2;
             TopGamesList.ItemsSource = ds3;
+            BannersList.ItemsSource = ds4;
+            //bannerImg.Source = new BitmapImage(new Uri("http://www.geekaygames.com/a/home/images/banner-ps4-console.jpg"));
         }
 
         void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e)
