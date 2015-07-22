@@ -56,10 +56,10 @@ namespace GeekayApp
             this.InitializeComponent();
             ObservableCollection<MyImageData> ds = new ObservableCollection<MyImageData>();
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/magnify.png", Title = "Scan a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MyImageData { Image = "ms-appx:///Assets/xbox.jpg", Title = "Search a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/offers.png", Title = "Offers", Subtitle = "Subtitle 1", Description = "Description 1" });
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/wlist.png", Title = "My Wishlist", Subtitle = "Subtitle 1", Description = "Description 1" });
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/xbox.jpg", Title = "Search a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
-
+            
             menuList.ItemsSource = ds;
 
         }

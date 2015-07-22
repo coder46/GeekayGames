@@ -52,8 +52,10 @@ namespace GeekayApp
             if(e.Key == Windows.System.VirtualKey.Enter)
             {
                 Windows.UI.ViewManagement.InputPane.GetForCurrentView().TryHide();
-                myText.Text = queryBox.Text;
-
+                //myText.Text = queryBox.Text;
+                LoadingBar.IsEnabled = true;
+                LoadingBar.Visibility = Visibility.Visible;
+            
                 ObservableCollection<GameListData> ds2 = new ObservableCollection<GameListData>();
 
                 try
@@ -68,41 +70,41 @@ namespace GeekayApp
                     if(result != "")
                     {
                         Debug.WriteLine(result);
-                        myText.Text = result;
-                        /*
-                        dynamic dynJson = JsonConvert.DeserializeObject(result);
-                        PayloadClass payload = new PayloadClass();
-                        foreach (var item in dynJson)
+                        
+                        JsonValue jsonValue = JsonValue.Parse(result);
+                        for(int i=0;i<jsonValue.GetArray().Count;i++)
                         {
+                            IJsonValue ele = jsonValue.GetArray()[i];
+                            Debug.WriteLine(ele.GetObject().GetNamedString("title"));
                             GameListData gameData = new GameListData();
-                            Debug.WriteLine(item.title);
                             
-                            gameData.gameName1 = item.title;
-                            gameData.pubName1 = item.publisher;
-                            Double rating = Convert.ToDouble(item.rating.toString());
+                            gameData.gameName1 = ele.GetObject().GetNamedString("title");
+                            gameData.pubName1 = ele.GetObject().GetNamedString("publisher");
+                            Double rating = (ele.GetObject().GetNamedNumber("rating"));
                             rating = rating * 0.5;
-                            gameData.ratingVal1 = Math.Ceiling(rating).ToString();
-                            gameData.yearRel1 = item.publishedDate.Split('-')[0];
+                            gameData.ratingVal1 = Math.Floor(rating).ToString();
+                            Debug.WriteLine(gameData.ratingVal1);
+                            gameData.yearRel1 = ele.GetObject().GetNamedString("publishedDate").Split('-')[0];
 
                             gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
-                            string gameId = item.id.ToString();
-                            if (gameId.Equals("10"))
+                            Double gameId = ele.GetObject().GetNamedNumber("id");
+                            if (gameId == 10)
                             {
                                 gameData.Image1 = "ms-appx:///Assets/forza_icon.jpg";
                             }
-                            else if (gameId.Equals("4"))
+                            else if (gameId == 4)
                             {
                                 gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
                             }
-                            else if (gameId.Equals("7"))
+                            else if (gameId == 7)
                             {
                                 gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
                             }
-                            else if (gameId.Equals("9"))
+                            else if (gameId == 9)
                             {
                                 gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
                             }
-                            else if (gameId.Equals("8"))
+                            else if (gameId == 8)
                             {
                                 gameData.Image1 = "ms-appx:///Assets/ac3_icon.jpg";
                             }
@@ -110,12 +112,14 @@ namespace GeekayApp
                             ds2.Add(gameData);
                             
                         }
-                        */
                         
                     }
                 }
                 catch (HttpRequestException ex)
                 {
+                    LoadingBar.IsEnabled = false;
+                    LoadingBar.Visibility = Visibility.Collapsed;
+
                     Debug.WriteLine(ex.Message.ToString());
                 }
                 
@@ -125,7 +129,11 @@ namespace GeekayApp
                 ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/fifa_icon.jpg", gameName1 = "Fifa 15", pubName1 = "EA Sports", yearRel1 = "2015", ratingVal1 = "3" });
                 ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/forza_icon.jpg", gameName1 = "Forza Motorsport 5", pubName1 = "Microsoft Studios", yearRel1 = "2013", ratingVal1 = "1" });
                 */
+
                 gameList.ItemsSource = ds2;
+                LoadingBar.IsEnabled = false;
+                LoadingBar.Visibility = Visibility.Collapsed;
+
 
             }
         }
