@@ -59,6 +59,7 @@ namespace GeekayApp
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/xbox.jpg", Title = "Search a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/offers.png", Title = "Offers", Subtitle = "Subtitle 1", Description = "Description 1" });
             ds.Add(new MyImageData { Image = "ms-appx:///Assets/wlist.png", Title = "My Wishlist", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MyImageData { Image = "ms-appx:///Assets/wlist.png", Title = "Home Page", Subtitle = "Subtitle 1", Description = "Description 1" });
             
             menuList.ItemsSource = ds;
 
@@ -86,6 +87,11 @@ namespace GeekayApp
             else if(data.Title.Equals("Search a Game"))
             {
                 this.Frame.Navigate(typeof(SearchEngine));
+            }
+            
+            else if (data.Title.Equals("Home Page"))
+            {
+                this.Frame.Navigate(typeof(HomePage));
             }
 
         }

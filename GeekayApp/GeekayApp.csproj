@@ -99,6 +99,9 @@
       <DependentUpon>GameList.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameListData.cs" />
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageProps.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -106,6 +109,7 @@
     <Compile Include="MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewGameListData.cs" />
     <Compile Include="NextStep.xaml.cs">
       <DependentUpon>NextStep.xaml</DependentUpon>
     </Compile>
@@ -144,6 +148,7 @@
     <Content Include="Assets\fifa_icon.jpg" />
     <Content Include="Assets\forza5_1.jpg" />
     <Content Include="Assets\forza_icon.jpg" />
+    <Content Include="Assets\ic_drawer.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\magnify.png" />
     <Content Include="Assets\offers.png" />
@@ -174,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +243,9 @@
     </Reference>
     <Reference Include="AForge.Math">
       <HintPath>..\packages\portable.aforge.math.2.2.5.50504\lib\portable-net45+netcore45+wpa81\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="DrawerLayout">
+      <HintPath>..\packages\DrawerLayout.1.0.4\lib\DrawerLayout.dll</HintPath>
     </Reference>
     <Reference Include="JRatingControl">
       <HintPath>..\packages\JISoft.Rating.1.0.3\lib\portable-wpa81+win81\JRatingControl.dll</HintPath>
