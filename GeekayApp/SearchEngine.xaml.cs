@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -69,6 +70,51 @@ namespace GeekayApp
                     {
                         Debug.WriteLine(result);
                         myText.Text = result;
+
+                        var json = JsonArray.Parse(result);
+                        foreach ( var dataItem in json)
+                        {
+                            Debug.WriteLine(dataItem.GetObject().GetNamedString("title"));
+                            GameListData gameData = new GameListData();
+
+
+                            gameData.gameName1 = dataItem.GetObject().GetNamedString("title");
+                            gameData.pubName1 = dataItem.GetObject().GetNamedString("publisher");
+                            //Double rating = Convert.ToDouble(dataItem.GetObject().GetNamedString("rating").ToString());
+                            Double rating = 3.0;
+                            rating = rating * 0.5;
+                            gameData.ratingVal1 = Math.Ceiling(rating).ToString();
+                            gameData.yearRel1 = dataItem.GetObject().GetNamedString("publishedDate").Split('-')[0];
+
+                            //gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
+                            BitmapImage img = new BitmapImage(new Uri(dataItem.GetObject().GetNamedString("pic2Url")));
+                            gameData.Image1 = img;
+                            /*
+                            string gameId = dataItem.GetObject().GetNamedNumber("id").ToString();
+                            if (gameId.Equals("10"))
+                            {
+                                gameData.Image1 = "ms-appx:///Assets/forza_icon.jpg";
+                            }
+                            else if (gameId.Equals("4"))
+                            {
+                                gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
+                            }
+                            else if (gameId.Equals("7"))
+                            {
+                                gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
+                            }
+                            else if (gameId.Equals("9"))
+                            {
+                                gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
+                            }
+                            else if (gameId.Equals("8"))
+                            {
+                                gameData.Image1 = "ms-appx:///Assets/ac3_icon.jpg";
+                            }
+                            */
+                            ds2.Add(gameData);
+                        }
+
                         /*
                         dynamic dynJson = JsonConvert.DeserializeObject(result);
                         PayloadClass payload = new PayloadClass();
@@ -110,7 +156,8 @@ namespace GeekayApp
                             ds2.Add(gameData);
                             
                         }
-                        */
+                         */
+                        
                         
                     }
                 }
@@ -125,12 +172,12 @@ namespace GeekayApp
                 ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/fifa_icon.jpg", gameName1 = "Fifa 15", pubName1 = "EA Sports", yearRel1 = "2015", ratingVal1 = "3" });
                 ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/forza_icon.jpg", gameName1 = "Forza Motorsport 5", pubName1 = "Microsoft Studios", yearRel1 = "2013", ratingVal1 = "1" });
                 */
-                gameList.ItemsSource = ds2;
+                searchList.ItemsSource = ds2;
 
             }
         }
 
-        private void gameListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void searchListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Use e.AddedItems to get the items that are selected in the ItemsControl.
             //selectedItems = (List<object>)e.AddedItems;
@@ -140,7 +187,7 @@ namespace GeekayApp
 
         }
 
-        private void gameList_Loaded(object sender, RoutedEventArgs e)
+        private void searchList_Loaded(object sender, RoutedEventArgs e)
         {
             /*
         
@@ -157,5 +204,6 @@ namespace GeekayApp
 
         }
 
+        
     }
 }

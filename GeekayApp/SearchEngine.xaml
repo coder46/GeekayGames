@@ -30,7 +30,7 @@
 
             </Grid.RowDefinitions>
             <TextBlock x:Name="myText" Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center"/>
-            <ListView Loaded="gameList_Loaded" x:Name="gameList" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top" SelectionChanged="gameListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+            <ListView Loaded="searchList_Loaded" x:Name="searchList" Grid.Row="1" HorizontalAlignment="Stretch" Grid.RowSpan="2" VerticalAlignment="Top" SelectionChanged="searchListView_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Padding" Value="5"/>
