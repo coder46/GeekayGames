@@ -32,7 +32,7 @@ namespace GeekayApp
             this.InitializeComponent();
             DrawerLayout.InitializeDrawerLayout();
 
-            string[] menuItems = new string[5] { "Item1", "Item2", "Item3", "Item4", "Item5" };
+            string[] menuItems = new string[5] { "Search a Game", "Scan a Game", "Wish List", "Settings", "Sign Out" };
             ListMenuItems.ItemsSource = menuItems.ToList();
 
             
@@ -219,6 +219,22 @@ namespace GeekayApp
                 DrawerLayout.CloseDrawer();
             else
                 DrawerLayout.OpenDrawer();
+        }
+
+        private void ListMenuItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var data = e.AddedItems[0] as String;
+
+            if(data.Equals("Search a Game"))
+            {
+                this.Frame.Navigate(typeof(SearchEngine));
+            }
+
+            else if (data.Equals("Scan a Game"))
+            {
+                this.Frame.Navigate(typeof(MainPage));
+            }
+
         }   
 
 

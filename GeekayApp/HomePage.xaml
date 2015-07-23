@@ -8,6 +8,9 @@
     mc:Ignorable="d"
     xmlns:drawerLayout="using:DrawerLayout"  
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Color x:Key="Color1">White</Color>
+    </Page.Resources>
 
     <Grid x:Name="RootLayout">
         <Grid.RowDefinitions>
@@ -15,7 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="TitleBar" Background="#00ADEF" Grid.Row ="0" Height="60">
+        <Grid x:Name="TitleBar" Background="#262626" Grid.Row ="0" Height="60">
             <!-- —Title Bar Code Goes Here -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -23,22 +26,28 @@
             </Grid.ColumnDefinitions>
 
             <Image Margin="5"  x:Name="DrawerIcon"  Grid.Column="0" Source="/Assets/ic_drawer.png" HorizontalAlignment="Left" Tapped="DrawerIcon_Tapped" />
-            <TextBlock Grid.Column="1" Text="HOME PAGE" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+            <TextBlock Grid.Column="1" Text="BROWSE" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
         <!-- Drawer Layout -->
         <drawerLayout:DrawerLayout Grid.Row="1"  x:Name="DrawerLayout">
             <!-- DrawerLayout code goes here -->
-            <Grid x:Name="MainFragment" Background="White">
+            <Grid x:Name="MainFragment">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAAAAAA"/>
+                        <GradientStop Color="#FF1E1E1E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
                 <!-- Main Content goes here -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
                 <Grid x:Name="NewGames" Grid.Row="0" >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="New Games" Foreground="Black" VerticalAlignment="Center" FontSize="25"/>
                     <ListView Grid.Row="1" x:Name="NewGamesList" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
@@ -47,10 +56,29 @@
                               ScrollViewer.VerticalScrollMode="Disabled" 
                               ScrollViewer.ZoomMode="Disabled">
                         <ListView.ItemTemplate>
-                            <DataTemplate> 
-                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="99" Height="130">
-                                    <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                            <DataTemplate>
+                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto">
+                                    <Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                        </Grid>
+                                        <!--Grid Overlays-->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="13*"/>
+                                                <ColumnDefinition Width="84*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0" Background="#FF646464" />
+                                            <Grid Grid.Column="1"/>
+                                            <Grid Grid.Column="2" Background="#FF646464" />
+                                        </Grid>
+                                    </Grid>
                                 </Border>
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
@@ -63,8 +91,8 @@
 
                 <Grid x:Name="TopGames" Grid.Row="1" >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Top Games" Foreground="Black" VerticalAlignment="Center" FontSize="25"/>
                     <ListView Grid.Row="1" x:Name="TopGamesList" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
@@ -74,9 +102,28 @@
                               ScrollViewer.ZoomMode="Disabled">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="99" Height="130">
-                                    <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto">
+                                    <Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                        </Grid>
+                                        <!--Grid Overlays-->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="13*"/>
+                                                <ColumnDefinition Width="84*"/>
+                                                <ColumnDefinition Width="13*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0" Background="#FF505050" />
+                                            <Grid Grid.Column="1"/>
+                                            <Grid Grid.Column="2" Background="#FF505050" />
+                                        </Grid>
+                                    </Grid>
                                 </Border>
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.ItemsPanel>
@@ -86,10 +133,10 @@
                         </ListView.ItemsPanel>
                     </ListView>
                 </Grid>
-                
+
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="8*"/>
                         <RowDefinition Height="38*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -102,6 +149,8 @@
                     <!--<Border Grid.Row="1" Grid.Column="1" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="Auto" Height="Auto">
                         <Image x:Name="bannerImg" Stretch="UniformToFill"/>
                     </Border>-->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Offers" Foreground="Black" VerticalAlignment="Center" FontSize="25"/>
+
                     <ListView Grid.Row="1" Grid.Column="1" x:Name="BannersList" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                               ScrollViewer.VerticalScrollBarVisibility="Disabled"
                               ScrollViewer.HorizontalScrollMode="Enabled"
@@ -110,7 +159,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto">
-                                    <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                    
+                                    <Image  x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -123,8 +173,9 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="ListFragment" Background="#F4F4F4">
-                <ListView x:Name="ListMenuItems">
+            <Grid x:Name="ListFragment" Background="#FF828282">
+                
+                <ListView x:Name="ListMenuItems" SelectionChanged="ListMenuItems_SelectionChanged" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" Foreground="Black" />
