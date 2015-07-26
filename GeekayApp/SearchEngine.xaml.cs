@@ -142,9 +142,13 @@ namespace GeekayApp
         {
             // Use e.AddedItems to get the items that are selected in the ItemsControl.
             //selectedItems = (List<object>)e.AddedItems;
-            var data = e.AddedItems[0] as GameListData;
-            Console.WriteLine(data.gameName1);
+            if (e.AddedItems.Count>0)
+            {
+                var data = e.AddedItems[0] as GameListData;
+                Debug.WriteLine(data.gameName1);
 
+            }
+            
 
         }
 
