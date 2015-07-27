@@ -55,12 +55,11 @@
                             <Grid  Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Height="130">
+                                <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto">
                                     <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
                                 </Border>
-
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -69,10 +68,10 @@
                                         <RowDefinition Height="Auto"/>
 
                                     </Grid.RowDefinitions>
-                                    <TextBlock x:Name="gameName1" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gameName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                    <TextBlock x:Name="pubName1"  Grid.Row="1" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding pubName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                    <TextBlock x:Name="yearRel1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding yearRel1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                    <RatingControl:Rating Height="20" Width="100" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="{Binding ratingVal1}" Margin="0,0.5,0,-0.5">
+                                    <TextBlock x:Name="gameName1" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gameTitle}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="pubName1"  Grid.Row="1" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gamePublisher}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="yearRel1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding datePub}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <RatingControl:Rating Height="20" Width="100" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="{Binding ratingVal}" Margin="0,0.5,0,-0.5">
                                         <RatingControl:Rating.FilledItemStyle>
                                             <Style TargetType="RatingControl:RatingItem">
                                                 <Setter Property="Background" Value="White" />

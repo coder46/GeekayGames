@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -56,7 +57,7 @@ namespace GeekayApp
                 LoadingBar.IsEnabled = true;
                 LoadingBar.Visibility = Visibility.Visible;
             
-                ObservableCollection<GameListData> ds2 = new ObservableCollection<GameListData>();
+                ObservableCollection<PayloadClass> ds2 = new ObservableCollection<PayloadClass>();
 
                 try
                 {
@@ -76,40 +77,19 @@ namespace GeekayApp
                         {
                             IJsonValue ele = jsonValue.GetArray()[i];
                             Debug.WriteLine(ele.GetObject().GetNamedString("title"));
-                            GameListData gameData = new GameListData();
-                            
-                            gameData.gameName1 = ele.GetObject().GetNamedString("title");
-                            gameData.pubName1 = ele.GetObject().GetNamedString("publisher");
+                            PayloadClass gamePL = new PayloadClass();
+                            gamePL.gameTitle = ele.GetObject().GetNamedString("title");
+                            gamePL.gamePublisher = ele.GetObject().GetNamedString("publisher");
                             Double rating = (ele.GetObject().GetNamedNumber("rating"));
                             rating = rating * 0.5;
-                            gameData.ratingVal1 = Math.Floor(rating).ToString();
-                            Debug.WriteLine(gameData.ratingVal1);
-                            gameData.yearRel1 = ele.GetObject().GetNamedString("publishedDate").Split('-')[0];
+                            gamePL.ratingVal = Math.Floor(rating).ToString();
+                            gamePL.datePub = ele.GetObject().GetNamedString("publishedDate").Split('-')[0];
+                            gamePL.pic2Url = ele.GetObject().GetNamedString("pic2Url");
+                            gamePL.Image1 = new BitmapImage(new Uri(gamePL.pic2Url));
 
-                            gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
-                            Double gameId = ele.GetObject().GetNamedNumber("id");
-                            if (gameId == 10)
-                            {
-                                gameData.Image1 = "ms-appx:///Assets/forza_icon.jpg";
-                            }
-                            else if (gameId == 4)
-                            {
-                                gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
-                            }
-                            else if (gameId == 7)
-                            {
-                                gameData.Image1 = "ms-appx:///Assets/fifa_icon.jpg";
-                            }
-                            else if (gameId == 9)
-                            {
-                                gameData.Image1 = "ms-appx:///Assets/batman_icon.jpg";
-                            }
-                            else if (gameId == 8)
-                            {
-                                gameData.Image1 = "ms-appx:///Assets/ac3_icon.jpg";
-                            }
+                            
 
-                            ds2.Add(gameData);
+                            ds2.Add(gamePL);
                             
                         }
                         
@@ -123,12 +103,7 @@ namespace GeekayApp
                     Debug.WriteLine(ex.Message.ToString());
                 }
                 
-                /*
-                ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/batman_icon.jpg", gameName1 = "Batman: Arkham City", pubName1 = "Warner Bros. Interactive Entertainment", yearRel1 = "2011", ratingVal1 = "2" });
-                ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/ac3_icon.jpg", gameName1 = "Assasins Creed 3", pubName1 = "Ubisoft", yearRel1 = "2013", ratingVal1 = "5" });
-                ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/fifa_icon.jpg", gameName1 = "Fifa 15", pubName1 = "EA Sports", yearRel1 = "2015", ratingVal1 = "3" });
-                ds2.Add(new GameListData { Image1 = "ms-appx:///Assets/forza_icon.jpg", gameName1 = "Forza Motorsport 5", pubName1 = "Microsoft Studios", yearRel1 = "2013", ratingVal1 = "1" });
-                */
+                
 
                 gameList.ItemsSource = ds2;
                 LoadingBar.IsEnabled = false;
@@ -144,8 +119,8 @@ namespace GeekayApp
             //selectedItems = (List<object>)e.AddedItems;
             if (e.AddedItems.Count>0)
             {
-                var data = e.AddedItems[0] as GameListData;
-                Debug.WriteLine(data.gameName1);
+                var data = e.AddedItems[0] as PayloadClass;
+                Debug.WriteLine(data.gameTitle);
 
             }
             
