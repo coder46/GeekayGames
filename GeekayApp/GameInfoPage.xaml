@@ -46,48 +46,51 @@
             <HubSection x:Name="HS1" Header="details">
 
                 <DataTemplate >
-                    <Grid HorizontalAlignment="Stretch">
+                    <Grid HorizontalAlignment="Stretch" ScrollViewer.IsVerticalScrollChainingEnabled="True">
+                        
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="4*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="4*"/>
                             <RowDefinition Height="1.5*"/>
                         </Grid.RowDefinitions>
-                        <Grid x:Name="InfoGrid" Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="1.5*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Height="160">
-                                <Image Loaded="gameImg_Loaded" x:Name="gameImg" Source="ms-appx:///Assets/ac3_icon.jpg" Stretch="UniformToFill"/>
-                            </Border>
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="0">
+                            <Grid x:Name="InfoGrid" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Height="160">
+                                    <Image Loaded="gameImg_Loaded" x:Name="gameImg" Source="ms-appx:///Assets/ac3_icon.jpg" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
 
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
 
-                                </Grid.RowDefinitions>
-                                <TextBlock x:Name="gameName" Loaded="gameName_Loaded" Grid.Row="0" FontSize="33" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Game Name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                <TextBlock x:Name="pubName" Loaded="pubName_Loaded" Grid.Row="1" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Publisher name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                <TextBlock x:Name="yearRel" Loaded="yearRel_Loaded" Grid.Row="3" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Year Released" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                <RatingControl:Rating Height="25" Width="126" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="3" Margin="0,0.5,0,-0.5">
-                                    <RatingControl:Rating.FilledItemStyle>
-                                        <Style TargetType="RatingControl:RatingItem">
-                                            <Setter Property="Background" Value="White" />
-                                        </Style>
-                                    </RatingControl:Rating.FilledItemStyle>
-                                    <RatingControl:Rating.UnfilledItemStyle>
-                                        <Style TargetType="RatingControl:RatingItem">
-                                            <Setter Property="Background" Value="#FF777676"/>
-                                        </Style>
-                                    </RatingControl:Rating.UnfilledItemStyle>
-                                </RatingControl:Rating>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="gameName" Loaded="gameName_Loaded" Grid.Row="0" FontSize="33" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Game Name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="pubName" Loaded="pubName_Loaded" Grid.Row="1" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Publisher name" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <TextBlock x:Name="yearRel" Loaded="yearRel_Loaded" Grid.Row="3" FontSize="21" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Year Released" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                    <RatingControl:Rating Height="25" Width="126" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="3" Margin="0,0.5,0,-0.5">
+                                        <RatingControl:Rating.FilledItemStyle>
+                                            <Style TargetType="RatingControl:RatingItem">
+                                                <Setter Property="Background" Value="White" />
+                                            </Style>
+                                        </RatingControl:Rating.FilledItemStyle>
+                                        <RatingControl:Rating.UnfilledItemStyle>
+                                            <Style TargetType="RatingControl:RatingItem">
+                                                <Setter Property="Background" Value="#FF777676"/>
+                                            </Style>
+                                        </RatingControl:Rating.UnfilledItemStyle>
+                                    </RatingControl:Rating>
+                                </Grid>
+
                             </Grid>
-
-                        </Grid>
+                        </ScrollViewer>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -96,7 +99,7 @@
                             <Button Grid.Column="0" Content="Buy Now" HorizontalAlignment="Left" Margin="0,0,0,-2" VerticalAlignment="Center" Background="#FF107C10"/>
                             <TextBlock x:Name="gamePrice" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" TextWrapping="Wrap" Text="AED 250" Margin="0,-1,0,0" FontWeight="Bold"/>
                         </Grid>
-                        <MediaElement Loaded="player_Loaded" x:Name="player" Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" PosterSource="Assets/ac3.jpg"  Stretch="UniformToFill" />
+                        <MediaElement Loaded="player_Loaded" x:Name="player" Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"   Stretch="UniformToFill" />
                         <Button x:Name="playBtn2" Grid.Row="3" Click="playBtn2_Click" Content="Play Trailer" HorizontalAlignment="Left" Margin="0,0,0,-2" VerticalAlignment="Top" Background="#FFFFCC00" Foreground="Black" />
 
 
@@ -133,7 +136,7 @@
                                                 <ColumnDefinition Width="1.5*"/>
                                             </Grid.ColumnDefinitions>
                                             <Border Grid.Column="0" Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="99" Height="130">
-                                                <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill"/>
+                                                <Image x:Name="gameImg" Source="{Binding Image1}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                             </Border>
 
                                             <Grid Grid.Column="1">
@@ -144,9 +147,9 @@
                                                     <RowDefinition Height="Auto"/>
 
                                                 </Grid.RowDefinitions>
-                                                <TextBlock x:Name="gameName1" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gameName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                                <TextBlock x:Name="pubName1"  Grid.Row="1" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding pubName1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
-                                                <TextBlock x:Name="yearRel1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding yearRel1}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                                <TextBlock x:Name="gameName1" Grid.Row="0" FontSize="28" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gameTitle}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                                <TextBlock x:Name="pubName1"  Grid.Row="1" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding gamePublisher}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
+                                                <TextBlock x:Name="yearRel1" Grid.Row="3" FontSize="16" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding datePub}" VerticalAlignment="Top" Margin="0,-2,0,0"/>
                                                 <RatingControl:Rating Height="20" Width="100" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" AllowSelectingZero="True" ReadOnly="True" RatingItemCount="5" Value="{Binding ratingVal1}" Margin="0,0.5,0,-0.5">
                                                     <RatingControl:Rating.FilledItemStyle>
                                                         <Style TargetType="RatingControl:RatingItem">
