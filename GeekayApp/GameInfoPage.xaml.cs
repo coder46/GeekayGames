@@ -149,6 +149,9 @@ namespace GeekayApp
 
         private void player_Loaded(object sender, RoutedEventArgs e)
         {
+            /*
+            Sample Comment block
+            */
             var player = (MediaElement)sender;
             var playerPoster = new ImageBrush();
             playerPoster.Stretch = Stretch.None;
