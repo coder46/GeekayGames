@@ -100,8 +100,15 @@
                             <TextBlock x:Name="gamePrice" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" TextWrapping="Wrap" Text="AED 250" Margin="0,-1,0,0" FontWeight="Bold"/>
                         </Grid>
                         <MediaElement Loaded="player_Loaded" x:Name="player" Grid.Row="2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"   Stretch="UniformToFill" />
-                        <Button x:Name="playBtn2" Grid.Row="3" Click="playBtn2_Click" Content="Play Trailer" HorizontalAlignment="Left" Margin="0,0,0,-2" VerticalAlignment="Top" Background="#FFFFCC00" Foreground="Black" />
-
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="playBtn2" Grid.Column="0" Click="playBtn2_Click" Content="Play Trailer" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="#FFFFCC00" Foreground="Black" />
+                            <Button x:Name="pauseBtn2" Grid.Column="1" Click="pauseBtn2_Click" Content="Pause Trailer" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="#FFFFCC00" Foreground="Black" />
+                        </Grid>
+                        
 
                     </Grid>
                 </DataTemplate>

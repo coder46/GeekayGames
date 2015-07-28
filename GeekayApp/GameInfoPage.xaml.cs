@@ -141,6 +141,25 @@ namespace GeekayApp
             }
         }
 
+        private void pauseBtn2_Click(object sender, RoutedEventArgs e)
+        {
+            MediaElement player = FindChildControl<MediaElement>(HS1, "player") as MediaElement;
+            try
+            {
+                if (player != null)
+                {
+                    player.Pause();
+                }
+            }
+            catch
+            {
+                
+            }
+            
+
+        }
+
+
         private void gameName_Loaded(object sender, RoutedEventArgs e)
         {
             var gameName = (TextBlock)sender;
@@ -265,5 +284,6 @@ namespace GeekayApp
 
         }
 
+        
     }
 }
