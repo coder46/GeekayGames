@@ -88,9 +88,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BannerListData.cs" />
-    <Compile Include="BlankPage1.xaml.cs">
-      <DependentUpon>BlankPage1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CameraCapture.cs" />
     <Compile Include="DataContract1.cs" />
     <Compile Include="GameInfoPage.xaml.cs">
@@ -172,10 +169,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BlankPage1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GameInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

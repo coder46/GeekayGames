@@ -19,11 +19,29 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GeekayApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    /// 
-    public class MyImageData
+    /*
+     * =================================================
+     * -------------------------------------------------
+     * METRO STYLE VERSION OF MENU PAGE
+     * -------------------------------------------------
+     * This page represents the MenuPage when users enter 
+     * the App for the first time. Menu Items include:
+     * => Scan a game -> Goes to -> MainPage.xaml 
+     * => Search a game -> Goes to -> SearchEngine.xaml
+     * => Offers
+     * => My Wishlist
+     * => HomePage (DrawerLayout Version) -> Goes to -> HomePage.xaml
+     * =================================================
+     */
+
+
+    /*
+     * ------------------------------------------------
+     * MenuData class stores data for Menu list
+     * ------------------------------------------------
+     */
+                       
+    public class MenuData
     {
         public string Image
         {
@@ -54,31 +72,37 @@ namespace GeekayApp
         public MenuPage()
         {
             this.InitializeComponent();
-            ObservableCollection<MyImageData> ds = new ObservableCollection<MyImageData>();
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/magnify.png", Title = "Scan a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/xbox.jpg", Title = "Search a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/offers.png", Title = "Offers", Subtitle = "Subtitle 1", Description = "Description 1" });
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/wlist.png", Title = "My Wishlist", Subtitle = "Subtitle 1", Description = "Description 1" });
-            ds.Add(new MyImageData { Image = "ms-appx:///Assets/wlist.png", Title = "Home Page", Subtitle = "Subtitle 1", Description = "Description 1" });
+
+            /// ObservableCollection is used to store ListView items
             
+            ObservableCollection<MenuData> ds = new ObservableCollection<MenuData>();
+            ds.Add(new MenuData { Image = "ms-appx:///Assets/magnify.png", Title = "Scan a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MenuData { Image = "ms-appx:///Assets/xbox.jpg", Title = "Search a Game", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MenuData { Image = "ms-appx:///Assets/offers.png", Title = "Offers", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MenuData { Image = "ms-appx:///Assets/wlist.png", Title = "My Wishlist", Subtitle = "Subtitle 1", Description = "Description 1" });
+            ds.Add(new MenuData { Image = "ms-appx:///Assets/wlist.png", Title = "Home Page", Subtitle = "Subtitle 1", Description = "Description 1" });
+            
+            /// ItemsSource property of ListView is set to the ObservableCollection object
+
             menuList.ItemsSource = ds;
 
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
 
+        /*
+         * ----------------------------------------------------------
+         * ItemListView_SelectionChanged invoked when user
+         * presses any item on menuList. Clicked item stored
+         * in e.AddedItems[0]
+         * ----------------------------------------------------------
+         */
         private void ItemListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Use e.AddedItems to get the items that are selected in the ItemsControl.
-            //selectedItems = (List<object>)e.AddedItems;
-            var data = e.AddedItems[0] as MyImageData;
+            var data = e.AddedItems[0] as MenuData;
             if(data.Title.Equals("Scan a Game"))
             {
                 this.Frame.Navigate(typeof(MainPage));
@@ -86,7 +110,7 @@ namespace GeekayApp
 
             else if(data.Title.Equals("Search a Game"))
             {
-                this.Frame.Navigate(typeof(SearchEngine));
+                this.Frame.Navigate(typeof(SearchEngine));  
             }
             
             else if (data.Title.Equals("Home Page"))
