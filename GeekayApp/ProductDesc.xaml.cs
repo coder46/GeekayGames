@@ -148,6 +148,7 @@ namespace GeekayApp
                                 PayloadClass payload = new PayloadClass();
                                 payload.game_id = game_id;
                                 payload.gameTitle = jsonValue2.GetObject().GetNamedString("title");
+                                payload.pic2Url = jsonValue2.GetObject().GetNamedString("pic2Url");
                                 payload.gamePublisher = jsonValue2.GetObject().GetNamedString("publisher");
                                 payload.datePub = jsonValue2.GetObject().GetNamedString("publishedDate");
                                 payload.gameCats = jsonValue2.GetObject().GetNamedString("gameCats");
